@@ -16,6 +16,8 @@ use OAuth2\OAuth2;
 use OAuth2\OAuth2ServerException;
 use Symfony\Component\HttpFoundation\Response;
 
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+
 class TokenController
 {
     /**
@@ -35,6 +37,26 @@ class TokenController
      * @param Request $request
      *
      * @return Response
+     *
+     * @ApiDoc(
+     *  resource=true,
+     *  section="Authentication",
+     *  description="Authenticate and get access_token",
+     *  requirements={
+     *      {
+     *          "name"="client_id",
+     *          "dataType"="varchar",
+     *      },
+     *      {
+     *          "name"="client_secret",
+     *          "dataType"="varchar",
+     *      },
+     *      {
+     *          "name"="grant_type",
+     *          "dataType"="varchar",
+     *      }
+     *  },
+     * )
      */
     public function tokenAction(Request $request)
     {
